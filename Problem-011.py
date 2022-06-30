@@ -54,6 +54,26 @@ grid = np.array([[8, 2, 22, 97, 38, 15, 00, 40, 00, 75, 4, 5, 7, 78, 52, 12, 50,
                  [20, 73, 35, 29, 78, 31, 90, 1, 74, 31, 49, 71, 48, 86, 81, 16, 23, 57, 5, 54],
                  [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]])
 
+max_product = 1
+for i in range(16):
+    for j in range(16):
+        # right
+        prod1 = grid[i, j] * grid[i+1, j] * grid[i+2, j] * grid[i+3, j]
+        if prod1 > max_product:
+            max_product = prod1
+        # down
+        prod2 = grid[i, j] * grid[i, j+1] * grid[i, j+2]*grid[i, j+3]
+        if prod2 > max_product:
+            max_product = prod2
+        # right and down
+        prod3 = grid[i, j] * grid[i+1, j+1] * grid[i+2, j+2] * grid[i+3, j+3]
+        if prod3 > max_product:
+            max_product = prod3
+        prod4 = grid[19-i, j] * grid[18-i, j+1] * grid[17-i, j+2] * grid[16-i, j+3]
+        if prod4 > max_product:
+            max_product = prod4
+answer = max_product
+
 print("Answer: %d" % answer)
 if answer == the_answer:
     print("Pass")
