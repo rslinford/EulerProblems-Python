@@ -1,6 +1,5 @@
 import time
-
-import numpy as np
+from math import factorial
 
 """
 Euler Problem 15
@@ -15,10 +14,12 @@ answer = 0
 the_answer = 137846528820
 start_time = time.time()
 
-"""
-1) 
-"""
 
+def calc_number_paths(n, k):
+    return factorial(n) / (factorial(k) * factorial(n - k))
+
+
+answer = calc_number_paths(40, 20)
 
 elapsed_time = time.time() - start_time
 print("Answer %d in %d seconds" % (answer, elapsed_time))
