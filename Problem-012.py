@@ -24,7 +24,7 @@ What is the value of the first triangle number to have over five hundred divisor
 """
 
 answer = 0
-the_answer = 70600674
+the_answer = 76576500
 
 """
 1) calculate next triangle number
@@ -36,30 +36,31 @@ the_answer = 70600674
 
 def calc_triangle_number(n):
     tn = 0
-    for j in range(1, n+1):
+    for j in range(1, n + 1):
         tn += j
     return tn
 
 
-tn_count = 0
-tn_value = 0
-tn_divisor = 0
-
-
-def tally_divisors(tn_value):
+def tally_divisors(n):
     tally = 0
-    for j in range(1, tn_value+1):
+    for j in range(1, n + 1):
         if tn_value % j == 0:
+            # print("%d has a divisor %d" % (n, j))
             tally += 1
     return tally
 
 
-while tn_divisor <= 500:
+tn_count = 0
+tn_value = 0
+tn_divisor_tally = 0
+
+
+while tn_divisor_tally <= 500:
     tn_count += 1
     tn_value = calc_triangle_number(tn_count)
-    tn_divisor = tally_divisors(tn_value)
-    if tn_count % 250 == 0 or tn_divisor > 400:
-        print("Triangle number %d => %d with %d divisors" % (tn_count, tn_value, tn_divisor))
+    tn_divisor_tally = tally_divisors(tn_value)
+    if tn_count % 100 == 0 or tn_divisor_tally > 100:
+        print("%d) triangle number => %d with %d divisors" % (tn_count, tn_value, tn_divisor_tally))
 
 answer = tn_value
 print("Answer: %d" % answer)
