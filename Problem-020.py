@@ -1,5 +1,5 @@
 import time
-from datetime import date
+from math import factorial
 
 """
 Euler Problem 20
@@ -16,6 +16,9 @@ answer = 0
 the_answer = 648
 start_time = time.time()
 
+a = list(str(factorial(100)))
+a = [int(x) for x in a]
+answer = sum(a)
 
 elapsed_time = time.time() - start_time
 print("Answer %d in %d seconds" % (answer, elapsed_time))
