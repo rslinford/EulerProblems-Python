@@ -21,7 +21,36 @@ Find the sum of all the positive integers which cannot be written as the sum of 
 answer = 0
 the_answer = 4179871
 start_time = time.time()
+upper_limit = 28123  # from the problem description
 
+
+def proper_divisors(n):
+    divisors = list()
+    for i in range(1, n):
+        if n % i == 0:
+            divisors.append(i)
+    return divisors
+
+
+def is_abundant(n):
+    return n < sum(proper_divisors(n))
+
+
+abundant_numbers = list()
+for x in range(1, upper_limit):
+    if is_abundant(x):
+        abundant_numbers.append(x)
+
+not_sum_of_two_abundants = [x for x in range(upper_limit)]
+
+for x in abundant_numbers:
+    for y in abundant_numbers:
+        s = x + y
+        if s < upper_limit:
+            # print("not the sum of two abundants " + str(s))
+            not_sum_of_two_abundants[s] = 0
+
+answer = sum(not_sum_of_two_abundants)
 
 elapsed_time = time.time() - start_time
 print("Answer %d in %d seconds" % (answer, elapsed_time))
