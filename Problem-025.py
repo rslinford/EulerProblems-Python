@@ -30,6 +30,19 @@ answer = 0
 the_answer = 4782
 start_time = time.time()
 
+fibs = list()
+fibs.append(1)
+fibs.append(1)
+number_of_digits = 0
+index = 2
+while number_of_digits != 1000:
+    index += 1
+    fibs.append(fibs[-1] + fibs[-2])
+    s = str(fibs[-1])
+    number_of_digits = len(s)
+    if number_of_digits == 1000:
+        answer = index
+        print("%d) %s" % (index, s))
 
 elapsed_time = time.time() - start_time
 print("Answer %s in %d seconds" % (answer, elapsed_time))
